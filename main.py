@@ -1,12 +1,12 @@
 import yt_dlp
 
-CHANNEL_URL = "https://www.youtube.com/@Rajan15x/videos"
+CHANNEL_URL = "https://www.youtube.com/@SyllabuswithRohit/videos"
 
 def get_total_duration(channel_url):
     ydl_opts = {
         'extract_flat': True,
         'dump_single_json': True,
-        'playlistend': 200,  # Adjust this limit as needed
+        'playlistend': 500,  # Adjust this limit as needed
         'quiet': True
     }
 
@@ -25,7 +25,6 @@ def get_total_duration(channel_url):
                 video_info = ydl.extract_info(url, download=False)
                 duration = video_info.get('duration', 0)
                 total_seconds += duration
-                print(video_info)
                 print(f"[{i}/{len(video_urls)}] ⏱ {duration // 60:02.0f}m {duration % 60:02.0f}s — {url}")
         except Exception as e:
             skipped += 1
